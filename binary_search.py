@@ -1,7 +1,7 @@
 """
 Binary Search
 """
-import math
+from typing import List
 
 
 def binary_search(arr, item):
@@ -21,8 +21,8 @@ def binary_search(arr, item):
     return None
 
 
-my_arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-my_item = 10
+my_arr = [-1, 0, 3, 5, 9, 12]
+my_item = 9
 
 
 # print(binary_search(my_arr, my_item))
@@ -100,5 +100,100 @@ def is_perfect_square(num: int) -> bool:
 
 
 value = 16
+
+
 # print(is_perfect_square(value))
 # math.sqrt(16) --> True
+
+# 2089. Find Target Indices After Sorting Array
+
+def targetIndices(nums, target: int):
+    nums.sort()
+    print(nums)
+    low = 0
+    high = len(nums) - 1
+    result = []
+    while low < high:
+        mid = (low + high) // 2
+        if nums[mid] < target:
+            result.append(nums[low])
+            low = mid + 1
+
+    return result
+
+
+# print(targetIndices([1, 2, 5, 2, 3], 4))
+
+
+# 704. Binary Search
+
+def search(nums, target) -> int:
+    low = 0
+    high = len(nums) - 1
+    while low <= high:
+        if len(nums) < 2:
+            return 0
+        mid = (low + high) // 2
+        guess = nums[mid]
+        if guess < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+        if guess == target:
+            return mid
+
+    return -1
+
+
+# print(search([9], -9))
+
+# 349. Intersection of Two Arrays
+
+def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
+    nums1.sort()
+    nums2.sort()
+    i = j = 0
+    n, m = len(nums1), len(nums2)
+    result = []
+    while i < n and j < m:
+        if nums1[i] == nums2[j]:
+            result.append(nums1[i])
+            i += 1
+        elif j > i:
+            j += 1
+            # continue
+        # result.append(nums1[i])
+
+    return result
+
+
+# print(intersection([1, 2, 2, 1], [2, 2]))
+# print(intersection([2], [2, 2]))
+# print(intersection([2, 1], [1, 2]))
+# print(intersection([4, 9, 5], [9, 4, 9, 8, 4]))
+
+
+# 350. Intersection of Two Arrays II
+def intersect(nums1, nums2):
+    nums1.sort()
+    nums2.sort()
+    i = j = 0
+    n, m = len(nums1), len(nums2)
+    result = []
+    while i < n and j < m:
+        if nums1[i] == nums2[j]:
+            result.append(nums1[i])
+            i += 1
+            j += 1
+        elif nums1[i] < nums2[j]:
+            i += 1
+        elif nums1[i] > nums2[j]:
+            j += 1
+
+    return result
+
+
+print(intersect([4, 9, 5], [9, 4, 9, 8, 4]))
+print(intersect([1, 2, 2, 1], [2, 2]))
+
