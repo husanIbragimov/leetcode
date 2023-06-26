@@ -1,4 +1,4 @@
-from linked_list import Node, LinkedList
+from algorithm_type.linked_list import Node, LinkedList
 
 llist = LinkedList()
 
