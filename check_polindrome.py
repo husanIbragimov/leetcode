@@ -14,3 +14,5 @@ print(solution("aabaa"))
 print(solution("a"))
 print(solution("aaabaaaa"))
 print(solution("zzzazzazz"))
+print(solution("121"))
+
